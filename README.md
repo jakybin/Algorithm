@@ -1,4 +1,4 @@
-### Overview
+# Overview
 
 * [1 Two Sum](#1-two-sum)
 * [2 Add Two Numbers](#2-add-two-numbers)
@@ -287,62 +287,39 @@
 * [304 Range Sum Query 2D Immutable](#304-range-sum-query-2d-immutable)
 * [305 Number of Islands II](#305-number-of-islands-ii)
 
+## 1. Two Sum
+>Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+
+>You may assume that each input would have exactly one solution.
+
+>Example:
+
+>Given nums = [2, 7, 11, 15], target = 9,
+
+>Because nums[0] + nums[1] = 2 + 7 = 9,
+
+>return [0, 1].
+
+### Solution:
 ```java
 public class Solution {
-  List<Integer> allAnagrams(String s, String l) {
-    // Write your solution here.
-    List<Integer> result = new ArrayList<>();
-    if (l.isEmpty()) {
-      return result;
-    }
-    if (s.length() > l.length()) {
-      return result;
-    }
-    // sliding window size of s
-    Map<Character, Integer> map = countMap(s);
-    int match = 0;
-    // adding the new(rightmost) element at the current window
-    for (int i = 0; i < l.length(); i++) {
-      char temp = l.charAt(i);
-      Integer count = map.get(temp);
-      if (count != null) {
-        map.put(temp, count - 1);
-        if (count == 1) {
-          match++;
+    public int[] twoSum(int[] nums, int target) {
+        if (nums == null || nums.length <= 1) {
+            return null;
         }
-      }
-    // removing the old(leftmost) element at the previous window
-      if (i >= s.length()) {
-        temp = l.charAt(i - s.length());
-        count = map.get(temp);
-        if (count != null) {
-          map.put(temp, count + 1);
-          if (count == 0) {
-            match--;
-          }
+        int[] res = new int[2];
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(target - nums[i])) {
+                res[0] = map.get(target - nums[i]);
+                res[1] = i;
+                return res;
+            } else {
+                map.put(nums[i], i);
+            }
         }
-      }
-      // for the curent window, if all matched, count are all 0
-      if (match == map.size()) {
-        result.add(i - s.length() + 1);
-      }
+        return res;
     }
-    return result;
-  }
-  
-  private Map<Character, Integer> countMap(String s) {
-    Map<Character, Integer> map = new HashMap<>();
-    for (char ch : s.toCharArray()) {
-      Integer count = map.get(ch);
-      if (count == null) {
-        map.put(ch, 1);
-      } else {
-        map.put(ch, count + 1);
-      }
-    }
-    return map;
-  }
 }
 ```
 
-<br>
