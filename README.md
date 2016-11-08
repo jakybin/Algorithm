@@ -287,8 +287,3 @@
 * [304 Range Sum Query 2D Immutable](#304-range-sum-query-2d-immutable)
 * [305 Number of Islands II](#305-number-of-islands-ii)
 
-###Others
-* [1 Fibonacci](#1-fibonacci)
-* [2 Binary Search Template](#2-binary-search-template)
-* [3 Merge Sort](#3-merge-sort)
-* [4 Quick Sort](#4-quick-sort)
