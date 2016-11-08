@@ -1,6 +1,6 @@
 # Coding
 
-public class Solution {
+# public class Solution {
   List<Integer> allAnagrams(String s, String l) {
     // Write your solution here.
     List<Integer> result = new ArrayList<>();
