@@ -301,7 +301,7 @@
 >return [0, 1].
 
 ### Solution:
-```java
+```Java
 public class Solution {
     public int[] twoSum(int[] nums, int target) {
         if (nums == null || nums.length <= 1) {
@@ -322,4 +322,71 @@ public class Solution {
     }
 }
 ```
+## 2. Add Two Numbers
+> You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
 
+> Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+
+> Output: 7 -> 0 -> 8
+
+### Solution:
+```Java
+public class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        // corner case
+        if (l1 == null && l2 == null) {
+            return null;
+        }
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
+        ListNode dummy = new ListNode(0);
+        ListNode cur3 = dummy;
+        int adder = 0;
+        ListNode cur1 = l1;
+        ListNode cur2 = l2;
+        while (cur1 != null && cur2 != null) {
+            if (cur1.val + cur2.val + adder >= 10) {
+                cur3.next = new ListNode(cur1.val + cur2.val + adder - 10);
+                adder = 1;
+            } else {
+                cur3.next = new ListNode(cur1.val + cur2.val + adder);
+                adder = 0;
+            }
+            cur1 = cur1.next;
+            cur2 = cur2.next;
+            cur3 = cur3.next;
+        }
+        while (cur1 != null) {
+            if (cur1.val + adder >= 10) {
+                cur3.next = new ListNode(cur1.val + adder - 10);
+                adder = 1;
+            } else {
+                cur3.next = new ListNode(cur1.val + adder);
+                adder = 0;
+            }
+            cur1 = cur1.next;
+            cur3 = cur3.next;
+        }
+        while (cur2 != null) {
+            if (cur2.val + adder >= 10 ) {
+                cur3.next = new ListNode(cur2.val + adder - 10);
+                adder = 1;
+            } else {
+                cur3.next = new ListNode(cur2.val + adder);
+                adder = 0;
+            }
+            cur2 = cur2.next;
+            cur3 = cur3.next;
+        }
+        if (adder == 1) {
+            cur3.next = new ListNode(1);
+        }
+        return dummy.next;
+        
+    }
+}
+```
