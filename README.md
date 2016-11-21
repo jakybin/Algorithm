@@ -332,8 +332,9 @@ public class Solution {
 
 > Output: `7 -> 0 -> 8`
 
-**Java**
+
 ### Solution 1:
+**Java**
 ```Java
 public class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
@@ -395,7 +396,8 @@ public class Solution {
 }
 ```
 ### Solution 2:
-```Java
+**Java**
+```java
 public class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(0);
