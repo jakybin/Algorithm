@@ -329,7 +329,7 @@ public class Solution {
 
 > Output: 7 -> 0 -> 8
 
-### Solution:
+### Solution 1:
 ```Java
 public class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
@@ -387,6 +387,36 @@ public class Solution {
         }
         return dummy.next;
         
+    }
+}
+```
+### Solution 2:
+```Java
+public class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(0);
+        ListNode cur1 = l1;
+        ListNode cur2 = l2;
+        ListNode cur3 = dummy;
+        int carry = 0;
+        while (cur1 != null || cur2 != null) {
+            int x = (cur1 == null) ? 0 : cur1.val;
+            int y = (cur2 == null) ? 0 : cur2.val;
+            int sum = x + y + carry;
+            carry = sum / 10;
+            cur3.next = new ListNode(sum % 10);
+            if (cur1 != null) {
+                cur1 = cur1.next;
+            }
+            if (cur2 != null) {
+                cur2 = cur2.next;
+            }
+            cur3 = cur3.next;
+        }
+        if (carry != 0) {
+            cur3.next = new ListNode(carry);
+        }
+        return dummy.next;
     }
 }
 ```
