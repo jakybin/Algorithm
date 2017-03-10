@@ -434,6 +434,12 @@ public class Solution {
 > Note:
 > Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
 
+Idea: If we can use extra memory, we can easily solve it using a hashmap.
+
+If can not use extra memory, you need to be aware of "Bit manipulation".
+
+N1 ^ N2 ^ N1 ^ N2 ^ N3 = N3
+
 ### Solution
 **Java**
 ```java
