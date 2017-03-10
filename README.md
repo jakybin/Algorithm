@@ -427,3 +427,59 @@ public class Solution {
 }
 ```
 <br>
+
+## 136. Single Number
+> Given an array of integers, every element appears twice except for one. Find that single one.
+
+> Note:
+> Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+
+### Solution
+**Java**
+```java
+public class Solution {
+    public int singleNumber(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        int res = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            res ^= nums[i]; 
+        }
+        return res;
+    }
+}
+```
+<br>
+
+## 344. Reverse String
+>Write a function that takes a string as input and returns the string reversed.
+
+>Example:
+>Given s = `"hello"`, return `"olleh"`.
+
+### Solution 1 Using iterative method
+**Java**
+```java
+public class Solution {
+    public String reverseString(String s) {
+        if (s == null || s.length() <= 1) {
+            return s;
+        }
+        char[] arr = s.toCharArray();
+        for (int i = 0; i < arr.length / 2; i++) {
+            swap(arr, i, arr.length - 1 - i);
+        }
+        return new String(arr);
+    }
+    
+    private void swap(char[] arr, int left, int right) {
+        char temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
+    }
+}
+```
+
+
+
